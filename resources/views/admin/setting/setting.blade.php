@@ -6,6 +6,12 @@
 <div class="content">
  <div class="container">
 
+ @if(session('error_message'))
+             <div class="alert alert-danger" role="alert">
+              {{ session('error_message') }}
+            </div>
+         @endif
+
  <div class="row">
                         
   <div class="col-sm-12">
@@ -18,7 +24,7 @@
     action="{{ url('/update_setting/'.$setting->id) }}" enctype="multipart/form-data">
     
                    @csrf
-                   @method('PUT') 
+                   {{-- @method('PUT')  --}}
     
 
        <div class="form-group ">
@@ -117,7 +123,7 @@
          </div>
        </div>
 
-        <div class="form-group ">
+      {{--   <div class="form-group ">
            <label for="company_logo" class="control-label col-lg-2">Company Logo<span class="text-danger">*</span></label>
          <div class="col-lg-10">
           <input class=" form-control" id="company_logo" name="company_logo" type="file">
@@ -126,7 +132,7 @@
             {{ ($errors->has('company_logo'))?($errors->first('company_logo')):'' }}
           </font> 
          </div>
-       </div>
+       </div> --}}
 
         
               </div>                

@@ -99,6 +99,6 @@ Route::post('/update_attendance', [App\Http\Controllers\Admin\AttendanceControll
 
 Route::get('/setting', [App\Http\Controllers\Admin\SettingsController::class,'setting'])->name('setting.profile');
 
-Route::get('/update_setting/{id}', [App\Http\Controllers\Admin\SettingsController::class,'update_setting']);
+Route::post('/update_setting/{id}', [App\Http\Controllers\Admin\SettingsController::class,'update_setting']);
 
 });

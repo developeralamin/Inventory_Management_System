@@ -119,8 +119,7 @@ class AttendanceController extends Controller
 
         $employee = DB::table('attendances')->join('employees',
         'attendances.user_id','employees.id')->select('employees.name','employees.photo','attendances.*')->where('edit_date',$edit_date)->get();
-      	
-
+  
      // print_r($edit_date);
       return view('admin.attendance.view_attendance',compact('employee','date'));
    }
