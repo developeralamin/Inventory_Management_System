@@ -56,7 +56,7 @@
                  <td>{{ $product->selling_price }}</td>
                   <td><img class="img-responsive img-thumbnail" 
                             src="{{ asset('uploads/product/'.$product->product_image) }}"
-                            style="height: 50px; width: 50px" alt=""></td>
+                            style="height: 100px; width: 100px" alt=""></td>
                  <td>{{ $product->product_garage }}</td>
                  <td>{{ $product->product_route }}</td>
                

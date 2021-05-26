@@ -207,7 +207,7 @@
                             </li>
 
                             <li class="">
-                                <a href="{{ route('home') }}" class="waves-effect"><i class="md md-share"></i><span> POS </span></a>
+                                <a href="{{ route('pos') }}" class="waves-effect"><i class="md md-share"></i><span> POS </span></a>
                             </li>
 
                             <li  class="{{ Request::is('employee*') ? 'active':'' }} has_sub">

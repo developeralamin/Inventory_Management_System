@@ -18,7 +18,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $this->data['customer']  = Customer::all();
+        $this->data['customer']  = Customer::orderBy('id', 'DESC')->get();
         return view('admin.customer.index',$this->data);
     }
 
@@ -79,7 +79,7 @@ class CustomerController extends Controller
        if($customer->save()){
          Session::flash('message','Customer Successfully Added');
        }
-       return redirect()->route('customer.index');
+       return redirect()->back();
     }
 
     /**

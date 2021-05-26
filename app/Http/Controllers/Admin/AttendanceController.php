@@ -22,7 +22,7 @@ class AttendanceController extends Controller
    	    return view('admin.attendance.add',compact('employee'));
     }
 
-    public function insert_attendance(Request $request , $id)
+    public function insert_attendance(Request $request)
     {
 
       $date = $request->att_date;
