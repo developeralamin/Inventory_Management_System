@@ -85,4 +85,14 @@ Route::post('/update_setting/{id}', [App\Http\Controllers\Admin\SettingsControll
 
 Route::get('/pos',[App\Http\Controllers\Admin\PosController::class,'pos'])->name('pos');
 
+// Cart Controller 
+
+Route::post('/add_cart', [App\Http\Controllers\Admin\CartController::class,'add_cart']);
+Route::post('/cart_update/{rowId}', [App\Http\Controllers\Admin\CartController::class,'cart_update']);
+Route::get('/cart_remove/{rowId}', [App\Http\Controllers\Admin\CartController::class,'cart_remove']);
+Route::post('/invoice', [App\Http\Controllers\Admin\CartController::class,'cart_invoice']);
+
+
+
+
 });
