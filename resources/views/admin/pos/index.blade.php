@@ -60,14 +60,14 @@
         <tr>
         <th>{{ $adddd_cart->name }}</th>
         <th>
-        <form action="{{ url('/cart_update/'.$adddd_cart->rowId) }}" method="post">
+
+
+<form action="{{ url('/cart_update/'.$adddd_cart->rowId) }}" method="post">
 
     @csrf
-
         <input type="number" name="qty" value="{{ $adddd_cart->qty }}" style="width: 80px">
         <button style="margin-top: -3px;" type="submit" class="btn btn-sm btn-info">
         <i class="fa fa-check"></i></button>
-
  </form>
 
         </th>
@@ -119,7 +119,7 @@
               $customer=DB::table('customers')->get();
           @endphp  
 
-         <form action="{{ url('/invoice') }}" method="post">
+<form action="{{ url('/invoice') }}" method="post">
 
          @csrf
 
@@ -306,4 +306,4 @@
             </div><!-- /.modal -->    
 
               </form> 
-            @endsection
+ @endsection

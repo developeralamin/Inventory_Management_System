@@ -6,6 +6,12 @@
 	<div class="content">
 	<div class="container">
 
+ 	@if(session('message'))
+             <div class="alert alert-success" role="alert">
+              {{ session('message') }}
+            </div>
+     @endif
+
 	    <!-- Page-Title -->
 	    <div class="row">
 	        <div class="col-sm-12">
@@ -103,7 +109,7 @@
     <div class="hidden-print">
         <div class="pull-right">
             <a href="#" onclick="window.print()" class="btn btn-inverse waves-effect waves-light"><i class="fa fa-print"></i></a>
-            <a href="#" class="btn btn-primary waves-effect waves-light">Submit</a>
+            <a href="#" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Submit</a>
         </div>
     </div>
 </div>
@@ -120,5 +126,72 @@
 	</div> <!-- content -->
 	</div>
 
+
+<!--invoice details here-->
+
+
+<form class="cmxform form-horizontal tasi-form" method="post" 
+            action="{{  route('final_invoice')  }}" >
+            @csrf
+
+            <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog"> 
+            <div class="modal-content"> 
+            <div class="modal-header"> 
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+            <h4 class="modal-title text-success">Invoice Of {{ $customer->name }}</h4> 
+            <h4 class="modal-title text-danger pull-center">Total : {{ Cart::total() }}</h4> 
+            </div> 
+            <div class="modal-body"> 
+            <div class="row"> 
+	            <div class="col-md-4"> 
+	            <div class="form-group"> 
+	            <label for="field-1" class="control-label">Payment</label> 
+	             
+	             <select name="payment_status" class="form-control">
+	             	<option value="Handcash">Handcash</option>
+	             	<option value="Cheque">Cheque</option>
+	             	<option value="Due">Due</option>
+	             	
+	             </select>
+
+	            </div> 
+	            </div> 
+            <div class="col-md-4"> 
+            <div class="form-group"> 
+               <label for="field-2" class="control-label">Pay</label> 
+                <input class="form-control"  name="pay" type="text"> 
+            </div> 
+            </div> 
+
+        <div class="col-md-4"> 
+            <div class="form-group"> 
+             <label for="field-3" class="control-label">Due</label> 
+             <input class=" form-control"  name="due" type="text">
+            </div> 
+         </div> 
+
+         <input type="hidden" name="customer_id" value="{{ $customer->id }}">
+         <input type="hidden" name="order_date" value="{{ date('m/d/y') }}">
+         <input type="hidden" name="order_status" value="pending">
+         <input type="hidden" name="total_product" value="{{ Cart::count() }}">
+         <input type="hidden" name="subtotal" value="{{ Cart::subtotal() }}">
+         <input type="hidden" name="vat" value="{{ Cart::tax() }}">
+         <input type="hidden" name="total" value="{{ Cart::total() }}">
+  
+
+
+            </div> 
+            <div class="modal-footer"> 
+            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button> 
+            <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button> 
+            </div> 
+
+            </div> 
+            </div>
+            </div><!-- /.modal -->    
+
+              </form> 
+           
 
   @endsection

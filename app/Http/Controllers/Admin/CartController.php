@@ -68,4 +68,42 @@ public function cart_remove($rowId)
      return view('admin.pos.invoice',compact('customer','contents'));
   }
 
+   
+   public function final_invoice(Request $request)
+   {
+   	  $data = array();
+
+    	$data['customer_id']      = $request->customer_id;
+    	$data['order_date']       = $request->order_date;
+    	$data['order_status']     = $request->order_status;
+    	$data['total_product']    = $request->total_product;
+    	$data['subtotal']         = $request->subtotal;
+    	$data['vat']              = $request->vat;
+    	$data['total']            = $request->total;
+    	$data['payment_status']   = $request->payment_status;
+    	$data['total_product']    = $request->total_product;
+    	$data['pay']              = $request->pay;
+    	$data['due']              = $request->due;
+    	
+    	 $order_id=DB::table('orders')->insertGetId($data);
+    	 $contents=Cart::content();
+         $showdata=array();
+
+    foreach ($contents as $content) {
+       	 $showdata['order_id']      = $order_id;
+       	 $showdata['product_id']    = $content->id;
+       	 $showdata['quantity']      = $content->qty;
+       	 $showdata['unitcost']      = $content->price;
+       	 $showdata['total']         = $content->total;
+
+       	 $insert=DB::table('order_details')->insert($showdata);
+       }
+
+       if($insert){
+       	Session::flash('message','Successfull Invoice Create ! Please delever the products and accept status');
+       }
+       return redirect()->route('home');
+   }
+  
+
 }

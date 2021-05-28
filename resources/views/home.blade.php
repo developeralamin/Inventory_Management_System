@@ -29,6 +29,12 @@
                 <div class="content">
                     <div class="container">
 
+                        @if(session('message'))
+             <div class="alert alert-success" role="alert">
+              {{ session('message') }}
+            </div>
+     @endif
+
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
