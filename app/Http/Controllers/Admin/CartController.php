@@ -102,7 +102,7 @@ public function cart_remove($rowId)
        if($insert){
        	Session::flash('message','Successfull Invoice Create ! Please delever the products and accept status');
        }
-       return redirect()->route('home');
+       return redirect()->route('pending_order');
    }
   
 

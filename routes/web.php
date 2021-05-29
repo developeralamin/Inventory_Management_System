@@ -84,6 +84,12 @@ Route::post('/update_setting/{id}', [App\Http\Controllers\Admin\SettingsControll
 //Pos Routes are here
 
 Route::get('/pos',[App\Http\Controllers\Admin\PosController::class,'pos'])->name('pos');
+Route::get('/pending_order',[App\Http\Controllers\Admin\PosController::class,'pending_order'])->name('pending_order');
+Route::get('/view_order_status/{id}',[App\Http\Controllers\Admin\PosController::class,'view_order_status']);
+Route::get('/pos_done/{id}',[App\Http\Controllers\Admin\PosController::class,'pos_done']);
+Route::get('/success_order',[App\Http\Controllers\Admin\PosController::class,'success_order'])->name('success_order');
+
+
 
 // Cart Controller 
 

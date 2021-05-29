@@ -107,6 +107,7 @@
                                 </div>
                             </div>
 
+
                             <div class="col-md-6 col-sm-6 col-lg-3">
                                 <div class="mini-stat clearfix bx-shadow">
                                     <span class="mini-stat-icon bg-primary"><i class="ion-android-contacts"></i></span>
